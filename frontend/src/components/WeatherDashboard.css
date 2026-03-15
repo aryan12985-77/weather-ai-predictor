@@ -1,0 +1,527 @@
+/* GLOBAL RESET */
+
+body{
+margin:0;
+font-family:"Segoe UI",sans-serif;
+background: linear-gradient(135deg,#0f2027,#203a43,#2c5364);
+
+min-height:100vh;
+overflow-x:hidden;
+}
+
+/* MAIN APP CONTAINER */
+
+.app{
+  min-height:100vh;
+  width:100%;
+
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+
+  padding:20px 20px 120px;
+
+  background: linear-gradient(
+      135deg,
+      #4facfe,
+      #00f2fe,
+      #43e97b,
+      #38f9d7
+  );
+
+  background-size:400% 400%;
+  animation: skyAnimation 12s ease infinite;
+
+  color:white;
+  overflow-y:auto;
+}
+
+/* SKY BACKGROUND ANIMATION */
+
+@keyframes skyAnimation{
+0%{
+    background-position:0% 50%;
+}
+50%{
+    background-position:100% 50%;
+}
+100%{
+    background-position:0% 50%;
+}
+}
+
+/* TITLE */
+.title{
+font-size:48px;
+margin-bottom:40px;
+font-weight:bold;
+letter-spacing:2px;
+
+text-shadow:
+0 0 10px rgba(255,255,255,0.7),
+0 0 20px rgba(255,255,255,0.5);
+
+animation:fadeDown 1s ease;
+}
+
+/* SEARCH BAR */
+
+.search{
+display:flex;
+gap:10px;
+margin-bottom:40px;
+}
+
+.search input{
+padding:12px 18px;
+border-radius:30px;
+border:none;
+width:260px;
+font-size:16px;
+outline:none;
+background:rgba(255,255,255,0.9);
+}
+
+.search button{
+padding:12px 22px;
+border:none;
+border-radius:30px;
+background:#ff9800;
+color:white;
+font-weight:bold;
+cursor:pointer;
+transition:0.3s;
+}
+
+.search button:hover{
+transform:scale(1.1);
+background:#ffb74d;
+}
+
+/* DASHBOARD */
+
+.dashboard{
+display:flex;
+justify-content:center;
+align-items:stretch;
+gap:30px;
+flex-wrap:wrap;
+margin-top:40px;
+}
+
+/* WEATHER CARD */
+
+.card{
+padding:30px;
+width:240px;
+border-radius:20px;
+
+background:rgba(255,255,255,0.15);
+backdrop-filter:blur(10px);
+
+text-align:center;
+color:white;
+
+box-shadow:0 8px 25px rgba(0,0,0,0.25);
+
+animation:fadeUp 0.8s ease;
+}
+
+/* TEMPERATURE */
+
+.temp{
+font-size:42px;
+font-weight:bold;
+margin:10px 0;
+}
+
+/* PREDICTION */
+
+.prediction{
+font-size:20px;
+font-weight:bold;
+margin-top:10px;
+}
+
+/* WEATHER ICON */
+
+.weather-icon{
+font-size:90px;
+margin-bottom:10px;
+animation:float 3s ease-in-out infinite;
+}
+
+.sun{color:yellow;}
+.cloud{color:#ddd;}
+.rain{color:#00e5ff;}
+
+/* FLOATING ICON ANIMATION */
+
+@keyframes float{
+0%{transform:translateY(0);}
+50%{transform:translateY(-10px);}
+100%{transform:translateY(0);}
+}
+
+/* LOADER */
+
+.loader{
+border:6px solid #f3f3f3;
+border-top:6px solid #ff9800;
+border-radius:50%;
+width:40px;
+height:40px;
+margin:30px auto;
+animation:spin 1s linear infinite;
+}
+
+@keyframes spin{
+100%{transform:rotate(360deg);}
+}
+
+/* FADE ANIMATIONS */
+
+@keyframes fadeUp{
+from{opacity:0;transform:translateY(30px);}
+to{opacity:1;transform:translateY(0);}
+}
+
+@keyframes fadeDown{
+from{opacity:0;transform:translateY(-30px);}
+to{opacity:1;transform:translateY(0);}
+}
+
+/* CHART CONTAINER */
+
+.chart-container{
+background:rgba(255,255,255,0.1);
+padding:20px;
+border-radius:20px;
+width:650px;
+max-width:90%;
+backdrop-filter:blur(10px);
+}
+
+/* SUNNY BACKGROUND */
+
+.sunny{
+background:linear-gradient(#56ccf2,#2f80ed);
+position:relative;
+overflow:hidden;
+}
+
+.sunny::before{
+content:"";
+position:absolute;
+top:80px;
+right:120px;
+width:120px;
+height:120px;
+background:yellow;
+border-radius:50%;
+box-shadow:0 0 80px yellow;
+animation:sunGlow 3s ease-in-out infinite alternate;
+}
+
+@keyframes sunGlow{
+0%{box-shadow:0 0 40px yellow;}
+100%{box-shadow:0 0 90px yellow;}
+}
+
+/* CLOUDY BACKGROUND */
+
+.cloudy{
+background:linear-gradient(#bdc3c7,#2c3e50);
+position:relative;
+overflow:hidden;
+}
+
+/* BACKGROUND CLOUD */
+
+.bg-cloud{
+position:absolute;
+top:120px;
+left:-200px;
+
+width:220px;
+height:70px;
+
+background:white;
+border-radius:50px;
+
+opacity:0.6;
+
+animation:moveClouds 40s linear infinite;
+}
+
+.bg-cloud::before{
+content:"";
+position:absolute;
+
+width:120px;
+height:120px;
+
+background:white;
+
+top:-60px;
+left:40px;
+
+border-radius:50%;
+}
+
+.bg-cloud::after{
+content:"";
+position:absolute;
+
+width:90px;
+height:90px;
+
+background:white;
+
+top:-40px;
+left:120px;
+
+border-radius:50%;
+}
+
+@keyframes moveClouds{
+0%{transform:translateX(-200px);}
+100%{transform:translateX(120vw);}
+}
+
+.cloud::before{
+content:"";
+position:absolute;
+width:100px;
+height:100px;
+background:white;
+top:-40px;
+left:30px;
+border-radius:50%;
+}
+
+@keyframes moveClouds{
+0%{transform:translateX(-200px);}
+100%{transform:translateX(120vw);}
+}
+
+/* RAINY BACKGROUND */
+
+.rainy{
+background:linear-gradient(#373b44,#4286f4);
+position:relative;
+overflow:hidden;
+}
+
+.rain{
+position:absolute;
+width:2px;
+height:20px;
+background:white;
+opacity:0.6;
+animation:rainFall 0.5s linear infinite;
+}
+
+@keyframes rainFall{
+0%{transform:translateY(-100px);}
+100%{transform:translateY(100vh);}
+}
+
+/* DAY / NIGHT MODE */
+
+.day{
+background:linear-gradient(135deg,#56ccf2,#2f80ed);
+}
+
+.night{
+background:linear-gradient(to bottom,#0f2027,#203a43,#2c5364);
+position:relative;
+}
+
+/* MOON */
+
+.night::after{
+content:"";
+position:absolute;
+top:80px;
+right:120px;
+width:80px;
+height:80px;
+background:#f5f3ce;
+border-radius:50%;
+box-shadow:0 0 40px white;
+}
+
+/* STARS */
+
+.night::before{
+content:"";
+position:absolute;
+width:2px;
+height:2px;
+background:white;
+
+box-shadow:
+100px 200px white,
+300px 100px white,
+500px 300px white,
+700px 200px white,
+900px 150px white,
+200px 400px white,
+600px 350px white,
+800px 450px white;
+
+animation:twinkle 2s infinite alternate;
+}
+
+@keyframes twinkle{
+from{opacity:0.3;}
+to{opacity:1;}
+}
+
+/* FORECAST SECTION */
+
+.weekly-container{
+width:100%;
+margin-top:60px;
+text-align:center;
+}
+
+.forecast-row{
+display:flex;
+justify-content:center;
+gap:16px;
+flex-wrap:wrap;
+max-width:900px;
+margin:0 auto;
+}
+
+.forecast-card{
+width:110px;
+padding:14px;
+border-radius:12px;
+
+background:rgba(255,255,255,0.15);
+backdrop-filter:blur(10px);
+
+color:white;
+text-align:center;
+
+transition:0.3s;
+}
+
+.forecast-card:hover{
+transform:translateY(-6px);
+}
+
+.forecast-date{
+font-size:14px;
+margin-bottom:6px;
+}
+
+.forecast-temp{
+font-size:20px;
+font-weight:bold;
+}
+
+.home-cloud{
+position:absolute;
+width:160px;
+height:60px;
+background:white;
+border-radius:50px;
+opacity:0.5;
+top:120px;
+
+animation:cloudMove 60s linear infinite;
+}
+
+@keyframes cloudMove{
+from{transform:translateX(-200px);}
+to{transform:translateX(120vw);}
+}
+
+
+/* smart Insights */
+.insight-container{
+    margin:40px;
+    text-align:center;
+}
+
+.insight-grid{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:20px;
+    margin-top:20px;
+}
+
+.insight-card{
+    background:rgba(255,255,255,0.15);
+    backdrop-filter:blur(10px);
+    padding:20px;
+    border-radius:12px;
+    color:white;
+    transition:0.3s;
+}
+
+.insight-card h3{
+    margin-bottom:10px;
+}
+
+/* AQI SECTION */
+
+.aqi-container{
+margin-top:40px;
+text-align:center;
+}
+
+.aqi-card{
+background:rgba(255,255,255,0.15);
+backdrop-filter:blur(10px);
+padding:25px;
+border-radius:15px;
+width:60%;
+margin:auto;
+box-shadow:0 8px 20px rgba(0,0,0,0.25);
+}
+
+.aqi-title{
+font-size:26px;
+margin-bottom:10px;
+}
+
+.aqi-level{
+font-size:22px;
+font-weight:bold;
+margin-bottom:15px;
+}
+
+.aqi-good{color:#2ecc71;}
+.aqi-fair{color:#27ae60;}
+.aqi-moderate{color:#f1c40f;}
+.aqi-poor{color:#e67e22;}
+.aqi-verypoor{color:#e74c3c;}
+
+.aqi-advice{
+margin-top:20px;
+}
+
+.aqi-advice h4{
+margin-top:10px;
+}
+
+.aqi-advice p{
+margin:5px 0;
+}
+
+.developer-footer{
+  margin-top:40px;
+  text-align:center;
+  color:white;
+  padding:20px;
+  opacity:0.8;
+  font-size:14px;
+}
+.developer-footer strong{
+  color:#77d637;
+}
